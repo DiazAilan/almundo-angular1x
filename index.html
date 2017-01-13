@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>AlmundoExam Angular 1.x</title>
+  <base href="/">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+	<link href="assets/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/css/font-awesome.min.css" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
+
+</head>
+<body ng-app="almundoExam" ng-controller="MainCtrl">
+    
+  <main-comp><i class="fa fa-spinner fa-spin fa-2x"></i> Cargando...</main-comp>
+
+  <ng-view></ng-view>
+
+  <script src="assets/js/jquery-3.1.1.min.js"></script>
+  <script src="assets/js/angular.min.js"></script>
+  <script src="node_modules/angular-route/angular-route.min.js"></script>
+  <script src="assets/js/bootstrap.min.js"></script>
+
+  <script src="app.module.js"></script>
+  <script src="app.controller.js"></script>
+  <script src="app.config.js"></script>
+  <script src="app.component.js"></script>
+
+  <!--Controllers-->
+  <script src="views/hotel-search/hotel-search-controller.js"></script>
+
+  <!--Components-->
+  <script src="views/hotel-search/search-card/search-card-component.js"></script>
+  <script src="views/hotel-search/search-filters/search-filters-component.js"></script>
+
+</body>
+</html>

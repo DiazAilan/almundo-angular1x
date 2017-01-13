@@ -1,0 +1,124 @@
+<div class="search-filters-css">
+	<div class="filter-card panel-defaul">
+		<span ng-click="$ctrl.filters.nameShow = !$ctrl.filters.nameShow">
+			<i class="fa fa-fw fa-search"></i> <b>Nombre de hotel</b> <i class="pull-right fa fa-lg fa-caret-{{$ctrl.filters.nameShow ? 'up' : 'down'}}"></i>
+		</span>
+		<div ng-hide="!$ctrl.filters.nameShow" class="filter-control">
+			<form>
+				<input type="text" class="form-control" ng-model="$ctrl.nameSearch" placeholder="Ingrese el nombre del hotel">
+				<a class="btn-almundo">Aceptar</a>
+			</form>
+		</div>
+	</div>
+	<div class="filter-card price-filter panel-defaul">
+		<span ng-click="$ctrl.priceShow = !$ctrl.priceShow">
+			<i class="fa fa-fw fa-dollar"></i> <b>Precio por noche</b> <i class="pull-right fa fa-lg fa-caret-{{$ctrl.priceShow ? 'up' : 'down'}}"></i>
+		</span>
+		<div ng-hide="!$ctrl.priceShow" class="filter-control">
+			<input type="number" min="0" step="1" class="form-control" ng-model="$ctrl.minPrice" placeholder="Min">
+			<span> - </span>
+			<input type="number" min="0" step="1" class="form-control" ng-model="$ctrl.maxPrice" placeholder="Max">
+		</div>
+	</div>
+	<div class="filter-card panel-defaul">
+		<span ng-click="$ctrl.starShow = !$ctrl.starShow">
+			<i class="fa fa-fw fa-star"></i> <b>Estrellas</b> <i class="pull-right fa fa-lg fa-caret-{{$ctrl.starShow ? 'up' : 'down'}}"></i>
+		</span>
+		<div ng-hide="!$ctrl.starShow" class="filter-control">
+			<form>
+				<input type="checkbox" ng-click="$ctrl.disableSpecificStars()" ng-model="$ctrl.filters.stars.all">
+				<span> <b>Todas las estrellas</b></span>
+				<br>
+				<input type="checkbox" ng-click="$ctrl.disableAllStars()" ng-model="$ctrl.filters.stars.five">
+				<span>
+					<i class="fa fa-fw fa-star"></i> 
+					<i class="fa fa-fw fa-star"></i> 
+					<i class="fa fa-fw fa-star"></i> 
+					<i class="fa fa-fw fa-star"></i> 
+					<i class="fa fa-fw fa-star"></i> 
+				</span>
+				<br>
+				<input type="checkbox" ng-click="$ctrl.disableAllStars()" ng-model="$ctrl.star4Search">
+				<span>
+					<i class="fa fa-fw fa-star"></i> 
+					<i class="fa fa-fw fa-star"></i> 
+					<i class="fa fa-fw fa-star"></i> 
+					<i class="fa fa-fw fa-star"></i>  
+				</span>
+				<br>
+				<input type="checkbox" ng-click="$ctrl.disableAllStars()" ng-model="$ctrl.star3Search">
+				<span>
+					<i class="fa fa-fw fa-star"></i> 
+					<i class="fa fa-fw fa-star"></i> 
+					<i class="fa fa-fw fa-star"></i> 
+				</span>
+				<br>
+				<input type="checkbox" ng-click="$ctrl.disableAllStars()" ng-model="$ctrl.star2Search">
+				<span>
+					<i class="fa fa-fw fa-star"></i> 
+					<i class="fa fa-fw fa-star"></i> 
+				</span>
+				<br>
+				<input type="checkbox" ng-click="$ctrl.disableAllStars()" ng-model="$ctrl.star1Search">
+				<span>
+					<i class="fa fa-fw fa-star"></i> 
+				</span>
+				<br>
+			</form>
+		</div>
+	</div>
+	<div class="filter-card panel-defaul">
+		<span ng-click="$ctrl.regimenShow = !$ctrl.regimenShow">
+			<i class="fa fa-fw fa-cutlery"></i> <b>Regímenes</b> <i class="pull-right fa fa-lg fa-caret-{{$ctrl.regimenShow ? 'up' : 'down'}}"></i>
+		</span>
+		<div ng-hide="!$ctrl.regimenShow" class="filter-control">
+			<form>
+				<p>
+					<input type="checkbox" ng-click="$ctrl.disableSpecificReg()" ng-model="$ctrl.regimenAll">
+					<span> <b>Todos los regímenes</b></span>
+				</p>
+				<p>
+					<input type="checkbox" ng-click="$ctrl.disableAllReg()" ng-model="$ctrl.regimenBedBrk">
+					<span> Cama y desayuno</span>
+				</p>
+				<p>
+					<input type="checkbox" ng-click="$ctrl.disableAllReg()" ng-model="$ctrl.regimenBed">
+					<span> Solo la habitación</span>
+				</p>
+				<p>
+					<input type="checkbox" ng-click="$ctrl.disableAllReg()" ng-model="$ctrl.regimenFullBrk">
+					<span> Desayuno Completo</span>
+				</p>
+				<p>
+					<input type="checkbox" ng-click="$ctrl.disableAllReg()" ng-model="$ctrl.regimenBrk2">
+					<span> Desayuno para 2</span>
+				</p>
+				<p>
+					<input type="checkbox" ng-click="$ctrl.disableAllReg()" ng-model="$ctrl.regimenBrk">
+					<span> Desayuno</span>
+				</p>
+			</form>
+		</div>
+	</div>
+	<div class="filter-card panel-defaul">
+		<span ng-click="$ctrl.payShow = !$ctrl.payShow">
+			<i class="fa fa-fw fa-credit-card"></i> <b>Tipo de pago</b> <i class="pull-right fa fa-lg fa-caret-{{$ctrl.payShow ? 'up' : 'down'}}"></i>
+		</span>
+		<div ng-hide="!$ctrl.payShow" class="filter-control">
+			<form>
+				<p>
+					<input type="checkbox" ng-click="$ctrl.disableSpecificPay()" ng-model="$ctrl.filters.payMethods.all">
+					<span> <b>Todos los métodos de pago</b></span>
+				</p>
+				<p>
+					<input type="checkbox" ng-click="$ctrl.disableAllPay()" ng-model="$ctrl.payDestiny">
+					<span> Pagá en destino</span>
+				</p>
+				<p>
+					<input type="checkbox" ng-click="$ctrl.disableAllPay()" ng-model="$ctrl.payQuota">
+					<span> Pagá en cuotas</span>
+				</p>
+			</form>
+		</div>
+	</div>
+</div>

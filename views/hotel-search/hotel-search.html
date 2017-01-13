@@ -1,0 +1,101 @@
+<div class="container hotel-search-css">
+	<div class="hidden-xs edit-search-desktop panel panel-fedault col-xs-12">
+		<form class="edit-search-form">
+			<div class="input-icon">
+				<i class="fa fa-fw fa-map-marker input-icon"></i>
+				<input type="text" class="form-control" ng-model="placeSearch" placeholder="Ingresá un destino">
+			</div>
+			<div class="input-icon">
+				<i class="fa fa-fw fa-toggle-right input-icon"></i>
+				<input type="date" class="form-control" ng-model="arriveDate">
+			</div>
+			<div class="input-icon">
+				<i class="fa fa-fw fa-toggle-left input-icon"></i>
+				<input type="date" class="form-control" ng-model="leaveDate">
+			</div>
+			<div class="input-icon">
+				<i class="fa fa-fw fa-user input-icon"></i>
+				<select type="number" class="form-control" ng-model="guests">
+					<option value="1">1 huésped</option>
+					<option value="2">2 huéspedes</option>
+					<option value="3">3 huéspedes</option>
+					<option value="4">4 huéspedes</option>
+					<option value="5">5 huéspedes</option>
+					<option value="6">6 huéspedes</option>
+					<option value="7">7 huéspedes</option>
+					<option value="8">8 huéspedes</option>
+					<option value="9">9 huéspedes</option>
+					<option value="10">10 huéspedes</option>
+				</select>
+			</div>
+			<a class="btn-almundo center-block" type="submit">Buscar</a>
+		</form>
+	</div>
+	<div class="sub-nav-options visible-xs">
+		<div class="sub-nav-option text-center center-block">
+			<span><a (click)="editSearchShow = !editSearchShow">Modificar búsqueda <i class="fa fa-fw fa-caret-{{editSearchShow ? 'up' : 'down'}}"></i></a></span>
+			<div [hidden]="!editSearchShow">
+				<form class="edit-search-form">
+					<div class="input-icon">
+						<i class="fa fa-fw fa-map-marker input-icon"></i>
+						<input type="text" class="form-control" ng-model="placeSearch" placeholder="Ingresá un destino">
+					</div>
+					<div class="input-icon">
+						<i class="fa fa-fw fa-toggle-right input-icon"></i>
+						<input type="date" class="form-control" ng-model="arriveDate">
+					</div>
+					<div class="input-icon">
+						<i class="fa fa-fw fa-toggle-left input-icon"></i>
+						<input type="date" class="form-control" ng-model="leaveDate">
+					</div>
+					<div class="input-icon">
+						<i class="fa fa-fw fa-user input-icon"></i>
+						<select type="number" class="form-control" ng-model="guests">
+							<option value="1">1 huésped</option>
+							<option value="2">2 huéspedes</option>
+							<option value="3">3 huéspedes</option>
+							<option value="4">4 huéspedes</option>
+							<option value="5">5 huéspedes</option>
+							<option value="6">6 huéspedes</option>
+							<option value="7">7 huéspedes</option>
+							<option value="8">8 huéspedes</option>
+							<option value="9">9 huéspedes</option>
+							<option value="10">10 huéspedes</option>
+						</select>
+					</div>
+					<a class="btn-almundo center-block" type="submit">Buscar</a>
+				</form>
+			</div>
+		</div>
+		<div class="sub-nav-option text-center center-block">
+			<span><a>Ver hoteles en el mapa</a></span>
+		</div>
+		<div class="sub-nav-option text-center center-block">
+			<span><a (click)="filterShow = !filterShow">Filtrar <i class="fa fa-fw fa-caret-{{filterShow ? 'up' : 'down'}}"></i></a></span>
+			<search-filters [hidden]="!filterShow"></search-filters>
+		</div>
+	</div>
+	<div class="text-center search-filter">
+		<div>
+			<span>Ordenar</span>
+			<select ng-model="sortOrder" ng-change="switchSort(sortOrder)">
+				<option value="stars" selected>Más relevantes</option>
+				<option value="priceH">Mayor precio</option>
+				<option value="priceL">Menor precio</option>
+			</select>
+		</div>
+	</div>
+	<div class="hidden-xs hidden-sm col-md-3 left-section">
+		<div class="card panel-defaul">
+			<a href="#" class="center-block text-center">
+				<img src="assets/img/map-marker.jpg" width="100%">
+				<h4>Ver hoteles en el mapa</h4>
+			</a>
+		</div>
+		<p><b>Filtrar</b></p>
+		<search-filters filters="filters"></search-filters>
+	</div>
+	<div class="col-xs-12 col-md-9 right-section">
+		<search-card ng-repeat="hotel in hotels | orderBy:sort.order:sort.reverse" hotel="hotel"></search-card>
+	</div>
+</div>

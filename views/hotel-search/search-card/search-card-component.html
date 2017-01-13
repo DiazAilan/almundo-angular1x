@@ -1,0 +1,32 @@
+<div class="search-card-css">
+	<div class="search-card panel panel-default">
+		<div class="col-xs-12 col-sm-4">
+			<div ng-if="$ctrl.hotel.recomended" class="recomendation center-block text-center">
+				<span>¡Hotel recomendado!</span>
+			</div>
+			<div class="hotel-image" style="background-image: url('assets/img/{{$ctrl.hotel.img}}');"></div>
+		</div>
+		<div class="col-xs-12 col-sm-4">
+			<h4 class="hotel-name"><b>{{$ctrl.hotel.name}}</b></h4>
+			<i ng-repeat="star in $ctrl.starsNum($ctrl.hotel.stars) track by $index" class="fa fa-fw fa-star"></i><br>
+			<p class="room-notice"><b><i class="fa fa-fw fa-bed"></i> Sólo la habitación</b></p>
+			<i ng-if="$ctrl.hotel.services.bar" class="fa fa-fw fa-glass"></i>
+			<i ng-if="$ctrl.hotel.services.beach" class="fa fa-fw fa-sun-o"></i>
+			<i ng-if="$ctrl.hotel.services.checkin" class="fa fa-fw fa-check-square-o"></i>
+			<i ng-if="$ctrl.hotel.services.breakfast" class="fa fa-fw fa-coffee"></i>
+			<i ng-if="$ctrl.hotel.services.gym" class="fa fa-fw fa-bicycle"></i>
+			<i ng-if="$ctrl.hotel.services.clean" class="fa fa-fw fa-shower"></i>
+			<i ng-if="$ctrl.hotel.services.wifi" class="fa fa-fw fa-wifi"></i>
+			<i ng-if="$ctrl.hotel.services.tv" class="fa fa-fw fa-tv"></i>
+			<i ng-if="$ctrl.hotel.services.admin" class="fa fa-fw fa-user-circle-o"></i>
+		</div>
+		<div class="col-xs-12 col-sm-4">
+			<p class="text-center">Precio por noche por habitación</p>
+			<h1 class="price-tag text-center"><small class="price-tag">ARS</small> <b>{{($ctrl.hotel.promotion ? $ctrl.hotel.promotion : $ctrl.hotel.price) | currency:'':0}}</b></h1>
+			<p class="text-center">Impuestos y tasas no incluídos</p>
+			<a class="center-block btn-almundo">Ver hotel</a>
+			<span ng-if="$ctrl.hotel.payMethods.quota" class="text-center center-block"><b>Pagá en cuotas</b></span>
+			<span ng-if="$ctrl.hotel.payMethods.destination" class="text-center center-block"><b>Pagá en destino</b></span>
+		</div>
+	</div>
+</div>
