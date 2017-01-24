@@ -1,5 +1,17 @@
 <div class="container hotel-search-css">
-	<div class="hidden-xs edit-search-desktop panel panel-fedault col-xs-12">
+	<div ng-hide="showSearchOptions" class="panel panel-default panel-search">
+	  <div class="panel-body">
+	    <p class="font-big"><b>Hoteles disponibles para:</b></p>
+	    <ul class="list-inline">
+	    	<li><i class="fa fa-fw fa-map-marker"></i> {{placeSearch}}</li>
+	    	<li><i class="fa fa-fw fa-toggle-right"></i> {{arriveDate | date:'dd/MM/yy'}}</li>
+	    	<li><i class="fa fa-fw fa-toggle-left"></i> {{leaveDate | date:'dd/MM/yy'}}</li>
+	    	<li><i class="fa fa-fw fa-user"></i> {{guests}} {{guests == '1' ? 'huésped' : 'huéspedes'}}</li>
+	    	<li><a href="#" ng-click="toggleSearch()">Modificar búsqueda</a></li>
+	    </ul>
+	  </div>
+	</div>
+	<div ng-show="showSearchOptions" class="hidden-xs edit-search-desktop panel panel-fedault col-xs-12">
 		<form class="edit-search-form">
 			<div class="input-icon">
 				<i class="fa fa-fw fa-map-marker input-icon"></i>
@@ -28,7 +40,8 @@
 					<option value="10">10 huéspedes</option>
 				</select>
 			</div>
-			<a class="btn-almundo center-block" type="submit">Buscar</a>
+			<a class="btn-almundo center-block" type="submit" ng-click="newSearch()">Buscar</a>
+			<span class="cancel-search-btn" ng-click="toggleSearch()"><i class="fa fa-2x fa-close"></i></span>
 		</form>
 	</div>
 	<div class="sub-nav-options visible-xs">
@@ -63,7 +76,7 @@
 							<option value="10">10 huéspedes</option>
 						</select>
 					</div>
-					<a class="btn-almundo center-block" type="submit">Buscar</a>
+					<a class="btn-almundo center-block" type="submit" ng-click="newSearch()">Buscar</a>
 				</form>
 			</div>
 		</div>
@@ -79,7 +92,8 @@
 		<div>
 			<span>Ordenar</span>
 			<select ng-model="sortOrder" ng-change="switchSort(sortOrder)">
-				<option value="stars" selected>Más relevantes</option>
+				<option value="starsH" selected>Más estrellas</option>
+				<option value="starsL">Menos estrellas</option>
 				<option value="priceH">Mayor precio</option>
 				<option value="priceL">Menor precio</option>
 			</select>

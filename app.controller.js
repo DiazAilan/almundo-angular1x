@@ -10,5 +10,6 @@
             $scope.$location = $location;
             $scope.$routeParams = $routeParams;
             
+            $scope.dropdownMore = false;
         }
 })();

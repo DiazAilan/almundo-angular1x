@@ -3,7 +3,8 @@
 
     angular
         .module('almundoExam', [
-            'ngRoute',         
+            'ngRoute',
+            'rzModule'         
         ])
 
 })();

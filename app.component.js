@@ -7,6 +7,6 @@
   'use strict';
 
 angular.module('almundoExam').component('mainComp', {
-  templateUrl: 'app.component.html',
+  templateUrl: 'app.component.html'
 });
 })();

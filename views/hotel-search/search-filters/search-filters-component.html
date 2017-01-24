@@ -5,31 +5,32 @@
 		</span>
 		<div ng-hide="!$ctrl.filters.nameShow" class="filter-control">
 			<form>
-				<input type="text" class="form-control" ng-model="$ctrl.nameSearch" placeholder="Ingrese el nombre del hotel">
+				<input type="text" class="form-control" ng-model="$ctrl.filters.nameSearch" placeholder="Ingrese el nombre del hotel">
 				<a class="btn-almundo">Aceptar</a>
 			</form>
 		</div>
 	</div>
 	<div class="filter-card price-filter panel-defaul">
-		<span ng-click="$ctrl.priceShow = !$ctrl.priceShow">
-			<i class="fa fa-fw fa-dollar"></i> <b>Precio por noche</b> <i class="pull-right fa fa-lg fa-caret-{{$ctrl.priceShow ? 'up' : 'down'}}"></i>
+		<span ng-click="$ctrl.filters.priceShow = !$ctrl.filters.priceShow">
+			<i class="fa fa-fw fa-dollar"></i> <b>Precio por noche</b> <i class="pull-right fa fa-lg fa-caret-{{$ctrl.filters.priceShow ? 'up' : 'down'}}"></i>
 		</span>
-		<div ng-hide="!$ctrl.priceShow" class="filter-control">
-			<input type="number" min="0" step="1" class="form-control" ng-model="$ctrl.minPrice" placeholder="Min">
-			<span> - </span>
-			<input type="number" min="0" step="1" class="form-control" ng-model="$ctrl.maxPrice" placeholder="Max">
+		<div ng-hide="!$ctrl.filters.priceShow" class="filter-control">
+			<rzslider class="custom-slider"
+    		rz-slider-model="$ctrl.filters.priceMin"
+    		rz-slider-high="$ctrl.filters.priceMax"
+    		rz-slider-options="slider.options"></rzslider>
 		</div>
 	</div>
 	<div class="filter-card panel-defaul">
-		<span ng-click="$ctrl.starShow = !$ctrl.starShow">
-			<i class="fa fa-fw fa-star"></i> <b>Estrellas</b> <i class="pull-right fa fa-lg fa-caret-{{$ctrl.starShow ? 'up' : 'down'}}"></i>
+		<span ng-click="$ctrl.filters.starShow = !$ctrl.filters.starShow">
+			<i class="fa fa-fw fa-star"></i> <b>Estrellas</b> <i class="pull-right fa fa-lg fa-caret-{{$ctrl.filters.starShow ? 'up' : 'down'}}"></i>
 		</span>
-		<div ng-hide="!$ctrl.starShow" class="filter-control">
+		<div ng-hide="!$ctrl.filters.starShow" class="filter-control">
 			<form>
-				<input type="checkbox" ng-click="$ctrl.disableSpecificStars()" ng-model="$ctrl.filters.stars.all">
+				<input type="checkbox" ng-disabled="$ctrl.filters.stars.all" ng-click="$ctrl.filters.disableSpecificStars()" ng-model="$ctrl.filters.stars.all">
 				<span> <b>Todas las estrellas</b></span>
 				<br>
-				<input type="checkbox" ng-click="$ctrl.disableAllStars()" ng-model="$ctrl.filters.stars.five">
+				<input type="checkbox" ng-click="$ctrl.filters.disableAllStars()" ng-model="$ctrl.filters.stars.five">
 				<span>
 					<i class="fa fa-fw fa-star"></i> 
 					<i class="fa fa-fw fa-star"></i> 
@@ -38,7 +39,7 @@
 					<i class="fa fa-fw fa-star"></i> 
 				</span>
 				<br>
-				<input type="checkbox" ng-click="$ctrl.disableAllStars()" ng-model="$ctrl.star4Search">
+				<input type="checkbox" ng-click="$ctrl.filters.disableAllStars()" ng-model="$ctrl.filters.stars.four">
 				<span>
 					<i class="fa fa-fw fa-star"></i> 
 					<i class="fa fa-fw fa-star"></i> 
@@ -46,20 +47,20 @@
 					<i class="fa fa-fw fa-star"></i>  
 				</span>
 				<br>
-				<input type="checkbox" ng-click="$ctrl.disableAllStars()" ng-model="$ctrl.star3Search">
+				<input type="checkbox" ng-click="$ctrl.filters.disableAllStars()" ng-model="$ctrl.filters.stars.three">
 				<span>
 					<i class="fa fa-fw fa-star"></i> 
 					<i class="fa fa-fw fa-star"></i> 
 					<i class="fa fa-fw fa-star"></i> 
 				</span>
 				<br>
-				<input type="checkbox" ng-click="$ctrl.disableAllStars()" ng-model="$ctrl.star2Search">
+				<input type="checkbox" ng-click="$ctrl.filters.disableAllStars()" ng-model="$ctrl.filters.stars.two">
 				<span>
 					<i class="fa fa-fw fa-star"></i> 
 					<i class="fa fa-fw fa-star"></i> 
 				</span>
 				<br>
-				<input type="checkbox" ng-click="$ctrl.disableAllStars()" ng-model="$ctrl.star1Search">
+				<input type="checkbox" ng-click="$ctrl.filters.disableAllStars()" ng-model="$ctrl.filters.stars.one">
 				<span>
 					<i class="fa fa-fw fa-star"></i> 
 				</span>
@@ -68,54 +69,54 @@
 		</div>
 	</div>
 	<div class="filter-card panel-defaul">
-		<span ng-click="$ctrl.regimenShow = !$ctrl.regimenShow">
-			<i class="fa fa-fw fa-cutlery"></i> <b>Regímenes</b> <i class="pull-right fa fa-lg fa-caret-{{$ctrl.regimenShow ? 'up' : 'down'}}"></i>
+		<span ng-click="$ctrl.filters.regimenShow = !$ctrl.filters.regimenShow">
+			<i class="fa fa-fw fa-cutlery"></i> <b>Regímenes</b> <i class="pull-right fa fa-lg fa-caret-{{$ctrl.filters.regimenShow ? 'up' : 'down'}}"></i>
 		</span>
-		<div ng-hide="!$ctrl.regimenShow" class="filter-control">
+		<div ng-hide="!$ctrl.filters.regimenShow" class="filter-control">
 			<form>
 				<p>
-					<input type="checkbox" ng-click="$ctrl.disableSpecificReg()" ng-model="$ctrl.regimenAll">
+					<input type="checkbox" ng-click="$ctrl.filters.disableSpecificReg()" ng-model="$ctrl.filters.regimenAll">
 					<span> <b>Todos los regímenes</b></span>
 				</p>
 				<p>
-					<input type="checkbox" ng-click="$ctrl.disableAllReg()" ng-model="$ctrl.regimenBedBrk">
+					<input type="checkbox" ng-click="$ctrl.filters.disableAllReg()" ng-model="$ctrl.filters.regimenBedBrk">
 					<span> Cama y desayuno</span>
 				</p>
 				<p>
-					<input type="checkbox" ng-click="$ctrl.disableAllReg()" ng-model="$ctrl.regimenBed">
+					<input type="checkbox" ng-click="$ctrl.filters.disableAllReg()" ng-model="$ctrl.filters.regimenBed">
 					<span> Solo la habitación</span>
 				</p>
 				<p>
-					<input type="checkbox" ng-click="$ctrl.disableAllReg()" ng-model="$ctrl.regimenFullBrk">
+					<input type="checkbox" ng-click="$ctrl.filters.disableAllReg()" ng-model="$ctrl.filters.regimenFullBrk">
 					<span> Desayuno Completo</span>
 				</p>
 				<p>
-					<input type="checkbox" ng-click="$ctrl.disableAllReg()" ng-model="$ctrl.regimenBrk2">
+					<input type="checkbox" ng-click="$ctrl.filters.disableAllReg()" ng-model="$ctrl.filters.regimenBrk2">
 					<span> Desayuno para 2</span>
 				</p>
 				<p>
-					<input type="checkbox" ng-click="$ctrl.disableAllReg()" ng-model="$ctrl.regimenBrk">
+					<input type="checkbox" ng-click="$ctrl.filters.disableAllReg()" ng-model="$ctrl.filters.regimenBrk">
 					<span> Desayuno</span>
 				</p>
 			</form>
 		</div>
 	</div>
 	<div class="filter-card panel-defaul">
-		<span ng-click="$ctrl.payShow = !$ctrl.payShow">
-			<i class="fa fa-fw fa-credit-card"></i> <b>Tipo de pago</b> <i class="pull-right fa fa-lg fa-caret-{{$ctrl.payShow ? 'up' : 'down'}}"></i>
+		<span ng-click="$ctrl.filters.payShow = !$ctrl.filters.payShow">
+			<i class="fa fa-fw fa-credit-card"></i> <b>Tipo de pago</b> <i class="pull-right fa fa-lg fa-caret-{{$ctrl.filters.payShow ? 'up' : 'down'}}"></i>
 		</span>
-		<div ng-hide="!$ctrl.payShow" class="filter-control">
+		<div ng-hide="!$ctrl.filters.payShow" class="filter-control">
 			<form>
 				<p>
-					<input type="checkbox" ng-click="$ctrl.disableSpecificPay()" ng-model="$ctrl.filters.payMethods.all">
+					<input type="checkbox" ng-click="$ctrl.filters.disableSpecificPay()" ng-model="$ctrl.filters.payMethods.all">
 					<span> <b>Todos los métodos de pago</b></span>
 				</p>
 				<p>
-					<input type="checkbox" ng-click="$ctrl.disableAllPay()" ng-model="$ctrl.payDestiny">
+					<input type="checkbox" ng-click="$ctrl.filters.disableAllPay()" ng-model="$ctrl.filters.payDestiny">
 					<span> Pagá en destino</span>
 				</p>
 				<p>
-					<input type="checkbox" ng-click="$ctrl.disableAllPay()" ng-model="$ctrl.payQuota">
+					<input type="checkbox" ng-click="$ctrl.filters.disableAllPay()" ng-model="$ctrl.filters.payQuota">
 					<span> Pagá en cuotas</span>
 				</p>
 			</form>

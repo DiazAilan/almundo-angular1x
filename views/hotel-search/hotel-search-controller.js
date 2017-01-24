@@ -1,15 +1,17 @@
-
-
     angular
         .module('almundoExam')
-        .controller('HotelSearchCtrl', ['$scope', '$rootScope', '$location', '$route', '$routeParams', HotelSearchCtrl])
+        .controller('HotelSearchCtrl', ['$scope', '$rootScope', '$location', '$route', '$routeParams', 'hotelSearchFactory', HotelSearchCtrl])
 
-        function HotelSearchCtrl($scope, $rootScope, $location, $route, $routeParams) {
+        function HotelSearchCtrl($scope, $rootScope, $location, $route, $routeParams, hotelSearchFactory) {
             $scope.$route = $route;
             $scope.$location = $location;
             $scope.$routeParams = $routeParams;
 
-            $scope.sortOrder = "stars";
+            $scope.hotels = hotelSearchFactory.getHotels();
+
+			$scope.filters = hotelSearchFactory.filters;
+
+            $scope.sortOrder = "starsH";
             $scope.sort = {
             	order: "stars",
             	reverse: true
@@ -17,118 +19,36 @@
             
             $scope.editSearchShow = false;
             $scope.filterShow = false;
-            $scope.placeSearch = "Berlín";
-            $scope.arriveDate = new Date(2017, 01, 20);
-            $scope.leaveDate = new Date(2017, 01, 27);
-            $scope.guests = "2";
+            $scope.showSearchOptions = false;
 
-            $scope.hotels = [{
-				"name" : "Hotel Emperador",
-				"stars" : 3,
-				"price" : 1596,
-				"promotion": undefined,
-				"img": "emperador.jpg",
-				"recomended": true,
-				"services": {
-					"bar": true,
-					"beach": true,
-					"checkin": true,
-					"breakfast": true,
-					"gym": true,
-					"clean": true,
-					"wifi": false,
-					"tv": false,
-					"admin": false
-				},
-				"payMethods": {
-					"quota": true,
-					"destination": true
-				}
-			},
-			{
-				"name" : "Petit Palace San Bernardo",
-				"stars" : 4,
-				"price" : 2145,
-				"promotion": undefined,
-				"img": "petit-palace.jpg",
-				"recomended": true,
-				"services": {
-					"bar": false,
-					"beach": true,
-					"checkin": true,
-					"breakfast": false,
-					"gym": false,
-					"clean": true,
-					"wifi": true,	
-					"tv": true,
-					"admin": true
-				},
-				"payMethods": {
-					"quota": false,
-					"destination": true
-				}
-			},
-			{
-				"name" : "Hotel Nuevo Boston",
-				"stars" : 2,
-				"price" : 1118,
-				"promotion": 861,
-				"img": "boston.jpg",
-				"recomended": false,
-				"services": {
-					"bar": true,
-					"beach": true,
-					"checkin": true,
-					"breakfast": true,
-					"gym": true,
-					"clean": false,
-					"wifi": false,
-					"tv": false,
-					"admin": true
-				},
-				"payMethods": {
-					"quota": true,
-					"destination": false
-				}
-			}]
+            $scope.placeSearch = hotelSearchFactory.place;
+            $scope.arriveDate = hotelSearchFactory.arriveDate;
+            $scope.leaveDate = hotelSearchFactory.leaveDate;
+            $scope.guests = hotelSearchFactory.guests;
 
-			$scope.filters = {
-				"nameShow": false,
-				"priceShow": false,
-				"starShow": false,
-				"regimenShow": false,
-				"payShow": false,
-				"stars": {
-					"all": true,
-					"five": false,
-					"four": false,
-					"three": false,
-					"two": false,
-					"one": false
-				},
-				"regimen": {
-					"all": true,
-					"bedBrk": false,
-					"bed": false,
-					"fullBrk": false,
-					"brk2": false,
-					"brk": false
-				},
-				"payMethods": {
-					"all": true,
-					"quota": false,
-					"destination": false
-				}
+			$scope.toggleSearch = function() {
+				$scope.showSearchOptions = !$scope.showSearchOptions;
+			}
+
+			$scope.newSearch = function() {
+				hotelSearchFactory.updateData($scope.placeSearch, $scope.arriveDate, $scope.leaveDate, $scope.guests);
+				$scope.showSearchOptions = !$scope.showSearchOptions;
 			}
 
 			$scope.switchSort = function(sortOrder) {
 
 	        	switch(sortOrder) {
-		    		case 'stars':
+		    		case 'starsH':
 		    			$scope.sort = {
 		    				order: "stars",
 		    				reverse: true
 		    			}
+	    			break;
+	    			case 'starsL':
+	    				$scope.sort = {
+	    					order: "stars",
+	    					reverse: false
+	    				}
 	    			break;
 		    		case 'priceH':
 		    			$scope.sort = {
@@ -143,6 +63,17 @@
 		    			}
 	    			break;
 	        	}
+	        }
+
+	        $scope.filters.disableAllStars = function() {
+	        	$scope.filters.stars.all = false;
+	        }
+	        $scope.filters.disableSpecificStars = function() {
+	        	$scope.filters.stars.five = false;
+	        	$scope.filters.stars.four = false;
+	        	$scope.filters.stars.three = false;
+	        	$scope.filters.stars.two = false;
+	        	$scope.filters.stars.one = false;
 	        }
 
         }

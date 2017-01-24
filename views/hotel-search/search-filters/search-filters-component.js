@@ -7,13 +7,20 @@ function ComponentCtrl($scope) {
 		return new Array(stars);
 	}
 
+	$scope.slider = {
+		options: {
+			floor: 500,
+			ceil: 12000
+		}
+	}
+
 }
 
 angular.module('almundoExam')
 .component('searchFilters', {
   templateUrl: 'views/hotel-search/search-filters/search-filters-component.html',
   bindings: {
-  	filters: '='
+  	filters: '=?'
   },
   controller: ComponentCtrl
 });
