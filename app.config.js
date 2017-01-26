@@ -7,14 +7,14 @@
 
             $routeProvider
                 .when('/', {
-                    templateUrl: '/views/hotel-search/hotel-search.html',
+                    templateUrl: '/angular-almundo1x/views/hotel-search/hotel-search.html',
                     controller: 'HotelSearchCtrl'
                 })
                 .when('/hoteles/:id', {
-                    templateUrl: '/views/hotel-search/hotel-search.html',
+                    templateUrl: '/angular-almundo1x/views/hotel-search/hotel-search.html',
                     controller: 'HotelSearchCtrl'
                 })
-                .otherwise({templateUrl:'/views/error.html'});
+                .otherwise({templateUrl:'/angular-almundo1x/views/error.html'});
 
             $locationProvider.html5Mode({
               enabled: true,
