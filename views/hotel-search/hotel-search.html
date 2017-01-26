@@ -1,5 +1,5 @@
 <div class="container hotel-search-css">
-	<div ng-hide="showSearchOptions" class="panel panel-default panel-search">
+	<div ng-hide="showSearchOptions" class="panel panel-default panel-search hidden-xs">
 	  <div class="panel-body">
 	    <p class="font-big"><b>Hoteles disponibles para:</b></p>
 	    <ul class="list-inline">
@@ -44,10 +44,10 @@
 			<span class="cancel-search-btn" ng-click="toggleSearch()"><i class="fa fa-2x fa-close"></i></span>
 		</form>
 	</div>
-	<div class="sub-nav-options visible-xs">
-		<div class="sub-nav-option text-center center-block">
-			<span><a (click)="editSearchShow = !editSearchShow">Modificar búsqueda <i class="fa fa-fw fa-caret-{{editSearchShow ? 'up' : 'down'}}"></i></a></span>
-			<div [hidden]="!editSearchShow">
+	<div class="sub-nav-options hidden-lg">
+		<div class="sub-nav-option text-center center-block visible-xs">
+			<span><a ng-click="editSearchShow = !editSearchShow">Modificar búsqueda <i class="fa fa-fw fa-caret-{{editSearchShow ? 'up' : 'down'}}"></i></a></span>
+			<div ng-hide="!editSearchShow">
 				<form class="edit-search-form">
 					<div class="input-icon">
 						<i class="fa fa-fw fa-map-marker input-icon"></i>
@@ -80,12 +80,12 @@
 				</form>
 			</div>
 		</div>
-		<div class="sub-nav-option text-center center-block">
+		<div class="sub-nav-option text-center center-block visible-xs">
 			<span><a>Ver hoteles en el mapa</a></span>
 		</div>
-		<div class="sub-nav-option text-center center-block">
-			<span><a (click)="filterShow = !filterShow">Filtrar <i class="fa fa-fw fa-caret-{{filterShow ? 'up' : 'down'}}"></i></a></span>
-			<search-filters [hidden]="!filterShow"></search-filters>
+		<div class="sub-nav-option text-center center-block hidden-md hidden-lg">
+			<span><a ng-click="filterShow = !filterShow">Filtrar <i class="fa fa-fw fa-caret-{{filterShow ? 'up' : 'down'}}"></i></a></span>
+			<search-filters ng-hide="!filterShow" filters="filters"></search-filters>
 		</div>
 	</div>
 	<div class="text-center search-filter">
@@ -103,13 +103,41 @@
 		<div class="card panel-defaul">
 			<a href="#" class="center-block text-center">
 				<img src="assets/img/map-marker.jpg" width="100%">
-				<h4>Ver hoteles en el mapa</h4>
+				<span class="view-map-label">Ver hoteles en el mapa</span>
 			</a>
 		</div>
-		<p><b>Filtrar</b></p>
+		<p><b>Filtrar</b> <a href="#" class="pull-right" ng-click="resetFilters()"><i class="fa fa-fw fa-close"></i> Eliminar filtros</a></p>
 		<search-filters filters="filters"></search-filters>
 	</div>
 	<div class="col-xs-12 col-md-9 right-section">
-		<search-card ng-repeat="hotel in hotels | orderBy:sort.order:sort.reverse" hotel="hotel"></search-card>
+		<search-card ng-repeat="hotel in hotels | filter:{name: filters.name} | priceFilter:filters | starsFilter:filters | regimenFilter: filters | paymentFilter: filters | orderBy:sort.order:sort.reverse" hotel="hotel"></search-card>
+		<div class="no-results">
+			<div class="alert alert-am">
+				<div class="alert-am-icon"><i class="fa fa-fw fa-exclamation-circle fa-2x"></i></div>
+				<div class="alert-am-content">
+			  		<span>Uy, no encontramos resultados. Podés cambiar o borrar los filtros.</span>
+			  	</div>
+			</div>
+			<img src="assets/img/no-results.svg" class="img-responsive center-block">
+		</div>
+		<div class="pagination-wrapper text-center">
+			<ul class="pagination">
+			    <li>
+			      <a href="#">
+			        <span>&laquo;</span>
+			      </a>
+			    </li>
+			    <li><a href="#">1</a></li>
+			    <li><a href="#">2</a></li>
+			    <li><a href="#">3</a></li>
+			    <li><a href="#">4</a></li>
+			    <li><a href="#">5</a></li>
+			    <li>
+			      <a href="#">
+			        <span>&raquo;</span>
+			      </a>
+			    </li>
+		  	</ul>
+	  	</div>
 	</div>
 </div>

@@ -64,7 +64,6 @@
 	    			break;
 	        	}
 	        }
-
 	        $scope.filters.disableAllStars = function() {
 	        	$scope.filters.stars.all = false;
 	        }
@@ -74,6 +73,57 @@
 	        	$scope.filters.stars.three = false;
 	        	$scope.filters.stars.two = false;
 	        	$scope.filters.stars.one = false;
+	        }
+	        $scope.filters.disableAllReg = function() {
+	        	$scope.filters.regimen.all = false;
+	        }
+	        $scope.filters.disableSpecificReg = function() {
+	        	$scope.filters.regimen.bedBrk = false;
+	        	$scope.filters.regimen.bed = false;
+	        	$scope.filters.regimen.fullBrk = false;
+	        	$scope.filters.regimen.brk2 = false;
+	        	$scope.filters.regimen.brk = false;
+	        }
+	        $scope.filters.disableAllPay = function() {
+	        	$scope.filters.payMethods.all = false;
+	        }
+	        $scope.filters.disableSpecificPay = function() {
+	        	$scope.filters.payMethods.quota = false;
+	        	$scope.filters.payMethods.destination = false;
+	        }
+	        $scope.resetFilters = function() {
+	        	$scope.filters = {
+					"nameShow": true,
+					"priceShow": true,
+					"starShow": true,
+					"regimenShow": true,
+					"payShow": true,
+					"name": "",
+					"targetName": "",
+					"priceMin": 200,
+					"priceMax": 2500,
+					"stars": {
+						"all": true,
+						"five": false,
+						"four": false,
+						"three": false,
+						"two": false,
+						"one": false
+					},
+					"regimen": {
+						"all": true,
+						"bedBrk": false,
+						"bed": false,
+						"fullBrk": false,
+						"brk2": false,
+						"brk": false
+					},
+					"payMethods": {
+						"all": true,
+						"quota": false,
+						"destination": false
+					}
+	        	}
 	        }
 
         }

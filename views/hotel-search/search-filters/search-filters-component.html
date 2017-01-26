@@ -5,8 +5,8 @@
 		</span>
 		<div ng-hide="!$ctrl.filters.nameShow" class="filter-control">
 			<form>
-				<input type="text" class="form-control" ng-model="$ctrl.filters.nameSearch" placeholder="Ingrese el nombre del hotel">
-				<a class="btn-almundo">Aceptar</a>
+				<input type="text" class="form-control" ng-model="$ctrl.filters.targetName" placeholder="Ingrese el nombre del hotel" >
+				<a class="btn-almundo" ng-click="$ctrl.filters.name = $ctrl.filters.targetName">Aceptar</a>
 			</form>
 		</div>
 	</div>
@@ -75,27 +75,27 @@
 		<div ng-hide="!$ctrl.filters.regimenShow" class="filter-control">
 			<form>
 				<p>
-					<input type="checkbox" ng-click="$ctrl.filters.disableSpecificReg()" ng-model="$ctrl.filters.regimenAll">
+					<input type="checkbox" ng-click="$ctrl.filters.disableSpecificReg()" ng-model="$ctrl.filters.regimen.all" ng-disabled="$ctrl.filters.regimen.all">
 					<span> <b>Todos los regímenes</b></span>
 				</p>
 				<p>
-					<input type="checkbox" ng-click="$ctrl.filters.disableAllReg()" ng-model="$ctrl.filters.regimenBedBrk">
+					<input type="checkbox" ng-click="$ctrl.filters.disableAllReg()" ng-model="$ctrl.filters.regimen.bedBrk">
 					<span> Cama y desayuno</span>
 				</p>
 				<p>
-					<input type="checkbox" ng-click="$ctrl.filters.disableAllReg()" ng-model="$ctrl.filters.regimenBed">
+					<input type="checkbox" ng-click="$ctrl.filters.disableAllReg()" ng-model="$ctrl.filters.regimen.bed">
 					<span> Solo la habitación</span>
 				</p>
 				<p>
-					<input type="checkbox" ng-click="$ctrl.filters.disableAllReg()" ng-model="$ctrl.filters.regimenFullBrk">
+					<input type="checkbox" ng-click="$ctrl.filters.disableAllReg()" ng-model="$ctrl.filters.regimen.fullBrk">
 					<span> Desayuno Completo</span>
 				</p>
 				<p>
-					<input type="checkbox" ng-click="$ctrl.filters.disableAllReg()" ng-model="$ctrl.filters.regimenBrk2">
+					<input type="checkbox" ng-click="$ctrl.filters.disableAllReg()" ng-model="$ctrl.filters.regimen.brk2">
 					<span> Desayuno para 2</span>
 				</p>
 				<p>
-					<input type="checkbox" ng-click="$ctrl.filters.disableAllReg()" ng-model="$ctrl.filters.regimenBrk">
+					<input type="checkbox" ng-click="$ctrl.filters.disableAllReg()" ng-model="$ctrl.filters.regimen.brk">
 					<span> Desayuno</span>
 				</p>
 			</form>
@@ -108,15 +108,15 @@
 		<div ng-hide="!$ctrl.filters.payShow" class="filter-control">
 			<form>
 				<p>
-					<input type="checkbox" ng-click="$ctrl.filters.disableSpecificPay()" ng-model="$ctrl.filters.payMethods.all">
+					<input type="checkbox" ng-click="$ctrl.filters.disableSpecificPay()" ng-model="$ctrl.filters.payMethods.all" ng-disabled="$ctrl.filters.payMethods.all">
 					<span> <b>Todos los métodos de pago</b></span>
 				</p>
 				<p>
-					<input type="checkbox" ng-click="$ctrl.filters.disableAllPay()" ng-model="$ctrl.filters.payDestiny">
+					<input type="checkbox" ng-click="$ctrl.filters.disableAllPay()" ng-model="$ctrl.filters.payMethods.destination">
 					<span> Pagá en destino</span>
 				</p>
 				<p>
-					<input type="checkbox" ng-click="$ctrl.filters.disableAllPay()" ng-model="$ctrl.filters.payQuota">
+					<input type="checkbox" ng-click="$ctrl.filters.disableAllPay()" ng-model="$ctrl.filters.payMethods.quota">
 					<span> Pagá en cuotas</span>
 				</p>
 			</form>

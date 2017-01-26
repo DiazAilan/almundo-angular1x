@@ -10,7 +10,7 @@ function ComponentCtrl($scope) {
 	$scope.slider = {
 		options: {
 			floor: 500,
-			ceil: 12000
+			ceil: 3000
 		}
 	}
 
@@ -23,4 +23,4 @@ angular.module('almundoExam')
   	filters: '=?'
   },
   controller: ComponentCtrl
-});
+})

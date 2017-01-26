@@ -3,7 +3,49 @@
   src: url("../fonts/roboto/roboto-regular.ttf"); }
 body {
   font-family: Roboto, sans-serif;
-  background-color: #F4F4F4; }
+  background-color: #F4F4F4;
+  min-height: 1200px; }
+  body .pagination {
+    margin: 0;
+    margin-bottom: 12px; }
+
+footer {
+  background-color: #003274;
+  color: #ffffff; }
+
+footer .container {
+  padding: 40px 7px; }
+
+.footer-sections {
+  margin-bottom: 20px;
+  overflow: hidden; }
+
+.footer-sections > div {
+  padding: 0 8px; }
+
+footer .container > .footer-sections h4 {
+  margin-top: 0;
+  border-bottom: 1px solid #ffffff;
+  padding-bottom: 8px;
+  margin-bottom: 8px;
+  font-size: 15px; }
+
+footer .container > .footer-sections ul > li {
+  margin-bottom: 8px; }
+
+footer .container > div a {
+  color: #ffffff;
+  font-size: 11.5px;
+  text-decoration: underline; }
+
+footer .container > div a:hover {
+  text-decoration: none; }
+
+footer .container > div > span {
+  font-size: 11.5px; }
+
+.footer-legal {
+  padding: 0 7px; }
 
 .sub-navbar {
   background: #013e74;
@@ -21,18 +63,25 @@ body {
 
 .sub-navbar .dropdown-menu li > a {
   color: #333;
-  display: block;
-  transition: background-color 0.5s; }
+  display: block; }
+
+.sub-navbar .dropdown-menu li > a:hover {
+  background-color: #ccc; }
 
 .sub-navbar .dropdown-menu {
   right: 0;
   left: auto; }
 
 .sub-navbar li > a {
+  transition: background-color 0.5s;
   padding: 8px 20px;
   color: #ffffff;
   font-weight: bold;
-  display: inline-block; }
+  display: inline-block;
+  text-decoration: none; }
+
+.sub-navbar li > a:hover {
+  background-color: #003274; }
 
 .font-big {
   font-size: 1.5em; }
@@ -106,7 +155,7 @@ body {
 .navbar-toggle {
   padding: 6px 3px; }
 
-.navbar-nav > li > a {
+.navbar-default .navbar-nav > li > a {
   color: #ffffff; }
 
 a:hover {
@@ -116,12 +165,55 @@ a:hover {
 .search-filter {
   margin-bottom: 10px; }
 
+.alert-am {
+  background-color: #F6CD64;
+  display: table;
+  width: 100%;
+  padding: 0; }
+
+.alert-am .alert-am-icon, .alert-am .alert-am-content {
+  display: table-cell; }
+
+.alert-am .alert-am-icon {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+  background-color: #F6BC33;
+  color: white; }
+
+.alert-am .alert-am-content {
+  position: relative;
+  box-sizing: border-box;
+  display: table-cell;
+  vertical-align: middle;
+  padding: 8px 16px; }
+
+.no-results {
+  display: block;
+  margin-bottom: 20px; }
+
+search-card + .no-results {
+  display: none; }
+
+.promotion-badge {
+  background-color: #509E3C;
+  position: absolute;
+  top: -6px;
+  left: 16px;
+  text-align: center; }
+
+.promotion-badge > span {
+  display: block;
+  color: #ffffff;
+  font-weight: bold;
+  padding: 9px 6px; }
+
 @media (min-width: 768px) {
   .search-filter {
     text-align: right; }
-
-  .navbar {
-    margin-bottom: 10px; }
 
   .breadcrumb {
     margin-bottom: 10px; }
@@ -157,10 +249,20 @@ a:hover {
 
   .nav-menu-desktop > li {
     padding: 30px 0; } }
+.hotel-search-css .view-map-label {
+  padding: 6px;
+  display: inline-block; }
 .hotel-search-css .panel-search {
   background-color: transparent; }
+.hotel-search-css .pagination-wrapper {
+  display: none; }
+.hotel-search-css search-card ~ .pagination-wrapper {
+  display: block; }
+.hotel-search-css .pagination {
+  margin: 0;
+  margin-bottom: 12px; }
 .hotel-search-css .sub-nav-options {
-  margin-bottom: 30px; }
+  margin-bottom: 20px; }
 .hotel-search-css .sub-nav-option {
   border-bottom: 1px solid #ccc;
   padding: 10px 0; }
@@ -168,7 +270,8 @@ a:hover {
   display: block;
   padding-bottom: 8px; }
 .hotel-search-css .edit-search-desktop {
-  padding: 24px; }
+  padding: 33px;
+  background-color: #cccccc; }
   .hotel-search-css .edit-search-desktop .input-icon {
     width: auto;
     display: inline-block; }
@@ -179,9 +282,10 @@ a:hover {
   .hotel-search-css .edit-search-desktop .input-icon select {
     margin-bottom: 0; }
   .hotel-search-css .edit-search-desktop .btn-almundo {
-    font-size: 1.2em;
     display: inline-block;
-    margin-bottom: 0; }
+    margin-bottom: 0;
+    font-size: 1em;
+    padding: 7px 6px; }
   .hotel-search-css .edit-search-desktop .cancel-search-btn {
     float: right;
     cursor: pointer; }
@@ -300,12 +404,15 @@ a:hover {
     border-radius: 0;
     background: #ffe4d1;
     top: -1px; }
+  @media (min-width: 768px) {
+    .search-filters-css .filter-control .form-control {
+      width: 600px; } }
   @media (min-width: 992px) {
     .search-filters-css .filter-control .form-control {
       max-width: 135px; } }
   @media (min-width: 1200px) {
     .search-filters-css .filter-control .form-control {
-      max-width: none;
+      max-width: 180px;
       width: auto; }
     .search-filters-css .price-filter .form-control {
       width: 80px; } }

@@ -6,7 +6,7 @@ angular
 			"name" : "Hotel Emperador",
 			"stars" : 3,
 			"price" : 1921,
-			"promotion": undefined,
+			"oldPrice": undefined,
 			"img": "emperador.jpg",
 			"recomended": true,
 			"services": {
@@ -20,6 +20,13 @@ angular
 				"tv": false,
 				"admin": false
 			},
+			"regimen": {
+				"bedBrk": false,
+				"bed": true,
+				"fullBrk": false,
+				"brk2": false,
+				"brk": false
+			},
 			"payMethods": {
 				"quota": true,
 				"destination": true
@@ -29,7 +36,7 @@ angular
 			"name" : "Petit Palace San Bernardo",
 			"stars" : 4,
 			"price" : 1876,
-			"promotion": undefined,
+			"oldPrice": undefined,
 			"img": "petit-palace.jpg",
 			"recomended": true,
 			"services": {
@@ -43,6 +50,13 @@ angular
 				"tv": true,
 				"admin": true
 			},
+			"regimen": {
+				"bedBrk": false,
+				"bed": true,
+				"fullBrk": false,
+				"brk2": false,
+				"brk": false
+			},
 			"payMethods": {
 				"quota": false,
 				"destination": true
@@ -51,8 +65,8 @@ angular
 		{
 			"name" : "Hotel Nuevo Boston",
 			"stars" : 2,
-			"price" : 1118,
-			"promotion": 861,
+			"price" : 861,
+			"oldPrice": 1118,
 			"img": "boston.jpg",
 			"recomended": false,
 			"services": {
@@ -66,49 +80,70 @@ angular
 				"tv": false,
 				"admin": true
 			},
-			"payMethods": {
-				"quota": true,
-				"destination": false
-			}
-		},{
-			"name" : "Hotel Nuevo Boston",
-			"stars" : 2,
-			"price" : 1118,
-			"promotion": 861,
-			"img": "boston.jpg",
-			"recomended": false,
-			"services": {
-				"bar": true,
-				"beach": true,
-				"checkin": true,
-				"breakfast": true,
-				"gym": true,
-				"clean": false,
-				"wifi": false,
-				"tv": false,
-				"admin": true
+			"regimen": {
+				"bedBrk": false,
+				"bed": true,
+				"fullBrk": false,
+				"brk2": false,
+				"brk": false
 			},
 			"payMethods": {
 				"quota": true,
 				"destination": false
 			}
 		},{
-			"name" : "Hotel Nuevo Boston",
-			"stars" : 2,
-			"price" : 1118,
-			"promotion": 861,
-			"img": "boston.jpg",
-			"recomended": false,
+			"name" : "Hotel Hard Rock",
+			"stars" : 5,
+			"price" : 2120,
+			"oldPrice": 2226,
+			"img": "hard-rock.jpg",
+			"recomended": true,
 			"services": {
 				"bar": true,
-				"beach": true,
+				"beach": false,
 				"checkin": true,
 				"breakfast": true,
 				"gym": true,
 				"clean": false,
-				"wifi": false,
+				"wifi": true,
+				"tv": true,
+				"admin": false
+			},
+			"regimen": {
+				"bedBrk": false,
+				"bed": true,
+				"fullBrk": false,
+				"brk2": false,
+				"brk": false
+			},
+			"payMethods": {
+				"quota": true,
+				"destination": true
+			}
+		},{
+			"name" : "Hotel Sofitel",
+			"stars" : 4,
+			"price" : 1410,
+			"oldPrice": 1680,
+			"img": "sofitel.jpg",
+			"recomended": false,
+			"services": {
+				"bar": true,
+				"beach": false,
+				"checkin": true,
+				"breakfast": true,
+				"gym": true,
+				"clean": true,
+				"wifi": true,
 				"tv": false,
-				"admin": true
+				"admin": false
+			},
+			"regimen": {
+				"bedBrk": false,
+				"bed": true,
+				"fullBrk": false,
+				"brk2": false,
+				"brk": false
 			},
 			"payMethods": {
 				"quota": true,
@@ -120,14 +155,16 @@ angular
 			place: 'Berlín',
 			arriveDate: new Date(2017, 01, 20),
 			leaveDate: new Date(2017, 01, 27),
-			guests: '1',
+			guests: '2',
 
 			filters: {
-				"nameShow": false,
-				"priceShow": false,
-				"starShow": false,
-				"regimenShow": false,
-				"payShow": false,
+				"nameShow": true,
+				"priceShow": true,
+				"starShow": true,
+				"regimenShow": true,
+				"payShow": true,
+				"name": "",
+				"targetName": "",
 				"priceMin": 200,
 				"priceMax": 2500,
 				"stars": {
@@ -160,6 +197,10 @@ angular
 			},
 			getHotels: function() {
 				return hotels;
+			},
+			resetFilters: function() {
+				this.filters.name = "";
+				console.log("working")
 			}
 		}
 

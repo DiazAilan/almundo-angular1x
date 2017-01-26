@@ -3,8 +3,12 @@ angular.module('almundoExam')
 
 function ComponentCtrl($scope) {
 
-	this.starsNum = function(stars) {
+	$scope.starsNum = function(stars) {
 		return new Array(stars);
+	}
+
+	$scope.getDiscount = function(hotelPrice, hotelPromotion) {
+		return Math.round((1 - hotelPromotion/hotelPrice) * 100);
 	}
 
 }
